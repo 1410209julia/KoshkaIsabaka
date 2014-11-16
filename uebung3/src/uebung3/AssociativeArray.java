@@ -6,5 +6,6 @@ public interface AssociativeArray {
 	public boolean isEmpty();
 	public boolean containsKey();
 	int a=0;
+	// LeoPush
 
 }
