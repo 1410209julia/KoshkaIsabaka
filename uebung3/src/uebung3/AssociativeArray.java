@@ -8,4 +8,5 @@ public interface AssociativeArray {
 	int a=0;
 	// LeoPush
 
+
 }
