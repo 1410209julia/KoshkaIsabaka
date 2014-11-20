@@ -80,28 +80,32 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 			return contains(root, value.hashCode());
 	}
 	
-	public boolean contains(TreeNode node, int hashwert){
+	public boolean contains(TreeNode node, int hash){
 		if(node != null){
-			if(node.key.hashCode() == hashwert || node.value.hashCode() == hashwert){
+			if(node.key.hashCode() == hash || node.value.hashCode() == hash){
 				return true;
-			} else if (contains(node.left, hashwert)){
+			} else if (contains(node.left, hash)){
 				return true;
-			} else if (contains(node.right, hashwert)){
+			} else if (contains(node.right, hash)){
 				return true;
 			}
 		}
 		return false;
 	}
-
 	
-
-	@Override
-	public U get(T key) {
-		if(containsKey(key)){
-			//noch zu machen
-		}
-		
-		return null;
+	public U get(T key){
+        
+        TreeNode node = root; 
+        
+        while (key.hashCode() != node.hashCode()) {
+          
+            if (key.hashCode() < node.key.hashCode()) {
+                node = node.left;
+            } else {
+            	node = node.right;
+            }
+        }
+        return node.value;
 	}
 
 	@Override

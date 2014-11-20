@@ -9,9 +9,11 @@ public class Test {
 		tree.put(4, "vier");
 		tree.put(7, "sieben");
 		tree.put(6, "sechs");
+		tree.put(3, "drei");
 		
 		System.out.println(tree.containsValue("acht"));
 		System.out.println(tree.containsKey(10));
+		System.out.println(tree.get(8));
 		
 		tree.printReversePostorder();
 	}
