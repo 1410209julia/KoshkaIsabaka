@@ -72,40 +72,28 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 
 	@Override
 	public boolean containsKey(T key) {
-		
-		return containsKey(root, key);
+		return contains(root, key.hashCode());
 	}
 	
-	public boolean containsKey(TreeNode node, T key){
-		 if (node != null) {
-	            if (node.key.equals(key)) {
-	                return true;
-	            } else if (containsKey(node.left, key)) {
-	                return true;
-	            } else if (containsKey(node.right, key)){
-	                return true;
-	            } 
-	        }
-		    return false;
-	}
-
 	@Override
 	public boolean containsValue(U value) {
-			return containsValue(root, value);
+			return contains(root, value.hashCode());
 	}
 	
-	public boolean containsValue(TreeNode node, U value){
-	    if (node != null) {
-            if (node.value.equals(value)) {
-                return true;
-            } else if (containsValue(node.left, value)) {
-                return true;
-            } else if (containsValue(node.right, value)){
-                return true;
-            } 
-        }
-	    return false;
-    }
+	public boolean contains(TreeNode node, int hashwert){
+		if(node != null){
+			if(node.key.hashCode() == hashwert || node.value.hashCode() == hashwert){
+				return true;
+			} else if (contains(node.left, hashwert)){
+				return true;
+			} else if (contains(node.right, hashwert)){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	
 
 	@Override
 	public U get(T key) {
@@ -118,10 +106,7 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 
 	@Override
 	public boolean isEmpty() {
-		if(this.root == null){
-			return true;
-		}
-		return false;
+		return this.root == null;
 	}
 
 	@Override
@@ -202,6 +187,6 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	
 	 public void printReversePostorder() {
 	        root.printReversePostorder();
-	    }
+	 }
 
 }
