@@ -93,11 +93,12 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 		return false;
 	}
 	
+	@Override
 	public U get(T key){
-        
         TreeNode node = root; 
         
-        while (key.hashCode() != node.hashCode()) {
+        if(containsKey(key)){
+        while (key.hashCode() != node.key.hashCode()) {
           
             if (key.hashCode() < node.key.hashCode()) {
                 node = node.left;
@@ -106,6 +107,8 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
             }
         }
         return node.value;
+        }
+        return null;
 	}
 
 	@Override
@@ -145,18 +148,14 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
         }
      }
 
-
-
 	@Override
 	public void putAll(BinaerHashTree<? extends T,? extends U,? extends R> knoten) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void remove(T key) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
@@ -168,25 +167,21 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	@Override
 	public void update(T key, U value) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void foreach(BiConsumer<? super T, ? super U> consum) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void extractAll() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void map(BiFunction<? super T, ? super U, ? super R> function) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	 public void printReversePostorder() {

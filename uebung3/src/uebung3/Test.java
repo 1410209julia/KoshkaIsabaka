@@ -13,7 +13,7 @@ public class Test {
 		
 		System.out.println(tree.containsValue("acht"));
 		System.out.println(tree.containsKey(10));
-		System.out.println(tree.get(8));
+		System.out.println(tree.get(5));
 		
 		tree.printReversePostorder();
 	}
