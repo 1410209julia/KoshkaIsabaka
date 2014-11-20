@@ -9,11 +9,11 @@ import java.util.function.BiFunction;
 	public void clear();
 	public boolean containsKey(T key);
 	public boolean containsValue(U value);
-	public T get(T kay);
+	public U get(T key);
 	public boolean isEmpty();
 	public void put(T key, U value);
 	//Paratmer
-	public void putAll(BinaerHashTree<T,U,R>.TreeNode knoten);
+	public void putAll(BinaerHashTree<? extends T,? extends U,? extends R> knoten);
 	public void remove(T key);
 	public int size();
 	public void update(T key, U value);	

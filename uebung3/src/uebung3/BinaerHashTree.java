@@ -11,23 +11,20 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 
 	    U value;
 	    T key;
-	    int hashKey;
 	    
 	    TreeNode left = null;
 	    TreeNode right = null;
 	    TreeNode parent = null;
 
-	   
+	   //Objektwerte werden in einen Knoten reingesetzt
 	    public TreeNode(U value, T key) {
 	        this.value = value;
 	        this.key = key;
-	        this.hashKey = key.hashCode();
 	    }
 
-	
+	    // left und right wird erzeugt
 	    public TreeNode(U value, T key, TreeNode left, TreeNode right) {
-	        this.value = value;
-	        this.hashKey = key.hashCode();
+	        this(value,key);
 	        this.left = left;
 	        this.right = right;
 	    }
@@ -35,19 +32,36 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	    
 	    public void setLeft(TreeNode n) {
 	        left = n;
-	        if (n != null) {
-	            //n.parent = this;
-	        }
+	        n.parent = this;
+	        
 	    }
 
-	  
 	    public void setRight(TreeNode n) {
 	        right = n;
+	        n.parent = this;
+	    }
+	
+	    public void print() {
+	        System.out.print(value + " " + key.hashCode() + '\n');
+	    }
+
+	    public String toString() {
+	        return value + " " ;
+	    }
+
+	    public void printReversePostorder() {
+	        printReversePostorder(this);
+	    }
+
+	    public void printReversePostorder(TreeNode n) {
+	        // Ist der Baum nicht leer?
 	        if (n != null) {
-	            //n.parent = this;
+	            // Dann kann weiter gemacht werden.
+	            printReversePostorder(n.right);
+	            printReversePostorder(n.left);
+	            n.print();
 	        }
 	    }
-	    
 	}
 	
 	//ok
@@ -58,36 +72,94 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 
 	@Override
 	public boolean containsKey(T key) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return containsKey(root, key);
+	}
+	
+	public boolean containsKey(TreeNode node, T key){
+		 if (node != null) {
+	            if (node.key.equals(key)) {
+	                return true;
+	            } else if (containsKey(node.left, key)) {
+	                return true;
+	            } else if (containsKey(node.right, key)){
+	                return true;
+	            } 
+	        }
+		    return false;
 	}
 
 	@Override
 	public boolean containsValue(U value) {
-		// TODO Auto-generated method stub
-		return false;
+			return containsValue(root, value);
 	}
+	
+	public boolean containsValue(TreeNode node, U value){
+	    if (node != null) {
+            if (node.value.equals(value)) {
+                return true;
+            } else if (containsValue(node.left, value)) {
+                return true;
+            } else if (containsValue(node.right, value)){
+                return true;
+            } 
+        }
+	    return false;
+    }
 
 	@Override
-	public T get(T kay) {
-		// TODO Auto-generated method stub
+	public U get(T key) {
+		if(containsKey(key)){
+			//noch zu machen
+		}
+		
 		return null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
+		if(this.root == null){
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public void put(T key, U value) {
-		// TODO Auto-generated method stub
+		put(new TreeNode(value, key));
 		
 	}
+	
+	public void put(TreeNode knoten){
+		
+        TreeNode parent = null;
+        TreeNode node = root; 
+        
+        while (node != null) {
+            parent = node;
+            
+            if (knoten.key.hashCode() == node.key.hashCode()) { 	
+                return;
+            } else if (knoten.key.hashCode() < node.key.hashCode()) {
+                node = node.left;
+            } else {
+            	node = node.right;
+            }
+        }
+        
+        if (parent == null) {
+            root = knoten;
+        } else if (knoten.key.hashCode() < parent.key.hashCode()) {
+            parent.setLeft(knoten);
+        } else {            
+            parent.setRight(knoten);
+        }
+     }
+
+
 
 	@Override
-	public void putAll(BinaerHashTree<T, U, R>.TreeNode knoten) {
+	public void putAll(BinaerHashTree<? extends T,? extends U,? extends R> knoten) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -127,5 +199,9 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	 public void printReversePostorder() {
+	        root.printReversePostorder();
+	    }
 
 }
