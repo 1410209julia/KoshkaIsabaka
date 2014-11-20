@@ -1,10 +1,9 @@
 package uebung3;
 
-//import java.util.function.BiConsumer;
-//import java.util.function.BiFunction;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
 
-public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
-	//public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
+public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	
 	public TreeNode root;
 	
@@ -16,6 +15,7 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 	    
 	    TreeNode left = null;
 	    TreeNode right = null;
+	    TreeNode parent = null;
 
 	   
 	    public TreeNode(U value, T key) {
@@ -25,15 +25,15 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 	    }
 
 	
-	    public TreeNode(U value, T key, TreeNode l, TreeNode r) {
+	    public TreeNode(U value, T key, TreeNode left, TreeNode right) {
 	        this.value = value;
 	        this.hashKey = key.hashCode();
-	        left = l;
-	        right = r;
+	        this.left = left;
+	        this.right = right;
 	    }
 
-	    /*
-	    public void setLeft(IntTreeNode n) {
+	    
+	    public void setLeft(TreeNode n) {
 	        left = n;
 	        if (n != null) {
 	            //n.parent = this;
@@ -41,13 +41,13 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 	    }
 
 	  
-	    public void setRight(IntTreeNode n) {
+	    public void setRight(TreeNode n) {
 	        right = n;
 	        if (n != null) {
 	            //n.parent = this;
 	        }
 	    }
-	    */
+	    
 	}
 	
 	//ok
@@ -55,14 +55,7 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 	public void clear() {
 		root = null;
 	}
-	
-	@Override
-	public void put(TreeNode knoten) {
-		 TreeNode parent = null; // (Vorläufiger) Elternknoten
-	     TreeNode node = root; // (Vorläufiger) Kindknoten
-	        
-	}
-	
+
 	@Override
 	public boolean containsKey(T key) {
 		// TODO Auto-generated method stub
@@ -87,16 +80,22 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 		return false;
 	}
 
-	
+	@Override
+	public void put(T key, U value) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
-	public void putAll() {
-		// TODO Auto-generated method stub	
+	public void putAll(BinaerHashTree<T, U, R>.TreeNode knoten) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void remove(T key) {
 		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -110,15 +109,15 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	@Override
-	public void extractAll() {
-		// TODO Auto-generated method stub
-	}
-	
-	/*
+
 	@Override
 	public void foreach(BiConsumer<? super T, ? super U> consum) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void extractAll() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -128,6 +127,5 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 		// TODO Auto-generated method stub
 		
 	}
-	*/
 
 }
