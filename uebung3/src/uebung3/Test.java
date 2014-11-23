@@ -1,9 +1,11 @@
 package uebung3;
 
+import java.util.function.BiFunction;
+
 public class Test {
 
 	public static void main(String[] args) {
-		BinaerHashTree<Object, Object, Object> tree = new BinaerHashTree<Object, Object, Object>();
+		BinaerHashTree<Object, Object> tree = new BinaerHashTree<Object, Object>();
 		tree.put(5, "fuenf");
 		tree.put(8, "acht");
 		tree.put(4, "vier");
@@ -13,8 +15,14 @@ public class Test {
 		tree.put(10, "zehn");
 		tree.put(10, "fuenf");
 		
-		BinaerHashTree<Object, Object, Object> baum = new BinaerHashTree<Object, Object, Object>();
-		baum.putAll(tree);
+		BinaerHashTree<String, String> baum = new BinaerHashTree<String, String>();
+		//baum.putAll(tree);
+		
+		baum.put("Lisa", "Miller");
+		baum.put("Jochen", "Schweizer");
+		//baum.extractAll(tree);
+		BiFunction<String, String, String> function = (key, value) -> key + value;
+		baum.map(function).printPreorder();
 		
 		
 		//System.out.println(tree.containsValue("acht"));
@@ -24,7 +32,7 @@ public class Test {
 		//System.out.println(tree.getNode(5));
 		//tree.update(10, "fuenf");
 		
-		baum.printReversePostorder();
+		tree.printPreorder();
 	}
 
 }

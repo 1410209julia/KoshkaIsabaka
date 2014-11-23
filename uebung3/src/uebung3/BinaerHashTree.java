@@ -3,7 +3,7 @@ package uebung3;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
-public class BinaerHashTree<T, U, R> implements AssociativeArray<T, U, R> {
+public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
 
 	public TreeNode root;
 	int counter = 0;
@@ -42,7 +42,7 @@ public class BinaerHashTree<T, U, R> implements AssociativeArray<T, U, R> {
 		}
 
 		public void print() {
-			System.out.print(value + " " + key.hashCode() + '\n');
+			System.out.print(value + " " + key + '\n');
 		}
 
 		// ok
@@ -51,17 +51,17 @@ public class BinaerHashTree<T, U, R> implements AssociativeArray<T, U, R> {
 
 		}
 
-		public void printReversePostorder() {
-			printReversePostorder(this);
+		public void printPreorder() {
+			printPreorder(this);
 		}
 
-		public void printReversePostorder(TreeNode n) {
+		public void printPreorder(TreeNode n) {
 			// Ist der Baum nicht leer?
 			if (n != null) {
 				// Dann kann weiter gemacht werden.
-				printReversePostorder(n.right);
-				printReversePostorder(n.left);
 				n.print();
+				printPreorder(n.left);
+				printPreorder(n.right);
 			}
 		}
 	}
@@ -166,12 +166,12 @@ public class BinaerHashTree<T, U, R> implements AssociativeArray<T, U, R> {
 			parent.setRight(knoten);
 		}
 	}
-
+	
+	BiConsumer<T, U> consume = (key, value) -> this.put(key, value);
+	
 	@Override
-	public void putAll(
-			BinaerHashTree<? extends T, ? extends U, ? extends R> node) {
-		BiConsumer<T, U> consumer = (key, value) -> this.put(key, value);
-		node.forEach(consumer);
+	public void putAll(BinaerHashTree<T, U> node) {
+		node.forEach(consume);
 	}
 
 	@Override
@@ -212,30 +212,44 @@ public class BinaerHashTree<T, U, R> implements AssociativeArray<T, U, R> {
 	}
 
 	@Override
-	public void forEach(BiConsumer<? super T, ? super U> consum) {
-		forEach(consum, root);
+	public void forEach(BiConsumer<T, U> consume) {
+		forEach(consume, root);
 	}
 	
-	public void forEach(BiConsumer<? super T, ? super U> consum, TreeNode node){
+	public void forEach(BiConsumer<T, U> consume, TreeNode node){
 		if(node != null){
-			consum.accept(node.key, node.value);
-			forEach(consum, node.left);
-			forEach(consum, node.right);
+			consume.accept(node.key, node.value);
+			forEach(consume, node.left);
+			forEach(consume, node.right);
 		}
 	}
 
 	@Override
-	public void extractAll() {
-		// TODO Auto-generated method stub
+	public void extractAll(BinaerHashTree<T,U> node) {
+		node.putAll(this);
 	}
 
+	//BiFunction<T, U, R> function = (key, value) -> key + value;
+	
 	@Override
-	public void map(BiFunction<? super T, ? super U, ? super R> function) {
-		// TODO Auto-generated method stub
+	public BinaerHashTree<T,U> map(BiFunction<T, U, U> function) {
+		BinaerHashTree<T,U> newTree = new BinaerHashTree<T,U>();
+		return map(function, root, newTree);	
 	}
-
-	public void printReversePostorder() {
-		root.printReversePostorder();
+	
+	// kein R mehr, weil wir sonst put nicht aufrufen können!
+	public BinaerHashTree<T,U> map(BiFunction<T, U, U> function, 
+			TreeNode node, BinaerHashTree<T,U> newTree){
+		if(node != null){
+			newTree.put(node.key, function.apply(node.key, node.value));
+			map(function,node.left, newTree);
+			map(function,node.right,newTree);
+		}
+		return newTree;	
+	}
+	
+	public void printPreorder() {
+		root.printPreorder();
 	}
 
 }

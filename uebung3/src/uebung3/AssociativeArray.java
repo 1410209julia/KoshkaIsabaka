@@ -4,7 +4,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
 
-	public interface AssociativeArray <T,U,R> {
+	public interface AssociativeArray <T,U> {
 	
 	public void clear();
 	public boolean containsKey(T key);
@@ -13,11 +13,11 @@ import java.util.function.BiFunction;
 	public boolean isEmpty();
 	public void put(T key, U value);
 	//Paratmer
-	public void putAll(BinaerHashTree<? extends T,? extends U,? extends R> knoten);
+	public void putAll(BinaerHashTree<T,U> node);
 	public void remove(T key);
 	public int size();
 	public void update(T key, U value);	
-	public void forEach(BiConsumer<? super T,? super U> consum);
-	public void extractAll();
-	public void map(BiFunction<? super T,? super U,? super R> function);
+	public void forEach(BiConsumer<T, U> consum);
+	public void extractAll(BinaerHashTree<T,U> node);
+	public BinaerHashTree<T,U> map(BiFunction<T,U,U> function);
 }
