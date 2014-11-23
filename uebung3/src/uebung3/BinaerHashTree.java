@@ -48,7 +48,8 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	    }
 
 	    public String toString() {
-	        return value + " " ;
+	        return value + " "  + key;
+	        
 	    }
 
 	    public void printReversePostorder() {
@@ -65,36 +66,53 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	        }
 	    }
 	}
+	public TreeNode getNode(T  key){
+		
+		return getNodeRek(key, root);
+	}
+	
+	public TreeNode getNodeRek(T key, TreeNode node){
+		if (node != null){
+			if(node.key.hashCode() == key.hashCode()) {
+				return node;
+			}else if(node.key.hashCode() > key.hashCode()) {
+				return getNodeRek(key, node.left);
+			}else {
+				return getNodeRek(key, node.right);
+			}
+		}
+		return null;
+	}
 	
 	//ok
 	@Override
 	public void clear() {
 		root = null;
 	}
-
+    //ok
 	@Override
 	public boolean containsKey(T key) {
 		return contains(root, key.hashCode());
 	}
-	
+	//ok
 	@Override
 	public boolean containsValue(U value) {
 			return contains(root, value.hashCode());
 	}
-	
+	//ok
 	public boolean contains(TreeNode node, int hash){
 		if(node != null){
 			if(node.key.hashCode() == hash || node.value.hashCode() == hash){
 				return true;
-			} else if (contains(node.left, hash)){
-				return true;
-			} else if (contains(node.right, hash)){
-				return true;
+			} else if (node.key.hashCode() > hash){
+				return contains(node.left, hash);
+			} else { 
+				return (contains(node.right, hash));
 			}
 		}
 		return false;
 	}
-	
+	//ok
 	@Override
 	public U get(T key){
         TreeNode node = root; 
@@ -112,18 +130,18 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
         }
         return null;
 	}
-
+    //ok
 	@Override
 	public boolean isEmpty() {
 		return this.root == null;
 	}
-
+    //ok
 	@Override
 	public void put(T key, U value) {
 		put(new TreeNode(value, key));
 		
 	}
-	
+	//ok
 	public void put(TreeNode knoten){
 		
         TreeNode parent = null;
@@ -161,7 +179,7 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	}
 
 	
-	
+	//ok
 	@Override
 	public int size(){
 		if (root == null){
@@ -171,7 +189,7 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 			return size(root);
 		}	
 	}
-	
+	//ok
 	public int size(TreeNode a){
 		//int size = 0;
 		if (a.left != null){
@@ -187,7 +205,9 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 
 	@Override
 	public void update(T key, U value) {
-		// TODO Auto-generated method stub
+		
+		
+		
 	}
 
 	@Override
