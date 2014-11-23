@@ -13,6 +13,8 @@ public class Test {
 		tree.put(10, "zehn");
 		tree.put(10, "fuenf");
 		
+		BinaerHashTree<Object, Object, Object> baum = new BinaerHashTree<Object, Object, Object>();
+		baum.putAll(tree);
 		
 		
 		//System.out.println(tree.containsValue("acht"));
@@ -22,7 +24,7 @@ public class Test {
 		//System.out.println(tree.getNode(5));
 		//tree.update(10, "fuenf");
 		
-		tree.printReversePostorder();
+		baum.printReversePostorder();
 	}
 
 }

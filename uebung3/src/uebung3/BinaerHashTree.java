@@ -169,8 +169,9 @@ public class BinaerHashTree<T, U, R> implements AssociativeArray<T, U, R> {
 
 	@Override
 	public void putAll(
-			BinaerHashTree<? extends T, ? extends U, ? extends R> knoten) {
-		// TODO Auto-generated method stub
+			BinaerHashTree<? extends T, ? extends U, ? extends R> node) {
+		BiConsumer<T, U> consumer = (key, value) -> this.put(key, value);
+		node.forEach(consumer);
 	}
 
 	@Override
@@ -211,8 +212,16 @@ public class BinaerHashTree<T, U, R> implements AssociativeArray<T, U, R> {
 	}
 
 	@Override
-	public void foreach(BiConsumer<? super T, ? super U> consum) {
-		// TODO Auto-generated method stub
+	public void forEach(BiConsumer<? super T, ? super U> consum) {
+		forEach(consum, root);
+	}
+	
+	public void forEach(BiConsumer<? super T, ? super U> consum, TreeNode node){
+		if(node != null){
+			consum.accept(node.key, node.value);
+			forEach(consum, node.left);
+			forEach(consum, node.right);
+		}
 	}
 
 	@Override
