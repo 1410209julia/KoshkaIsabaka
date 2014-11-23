@@ -6,11 +6,13 @@ import java.util.function.BiFunction;
 public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 	
 	public TreeNode root;
+	int counter=0;
 	
 	class TreeNode {
 
 	    U value;
 	    T key;
+	    
 	    
 	    TreeNode left = null;
 	    TreeNode right = null;
@@ -158,10 +160,29 @@ public class BinaerHashTree<T, U,R> implements AssociativeArray<T, U,R> {
 		// TODO Auto-generated method stub	
 	}
 
+	
+	
 	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int size(){
+		if (root == null){
+			return counter;
+		}else {
+			counter++;
+			return size(root);
+		}	
+	}
+	
+	public int size(TreeNode a){
+		//int size = 0;
+		if (a.left != null){
+			counter++;
+			size(a.left);
+		}
+		if(a.right != null){
+			counter++;
+			size(a.right);
+		}
+		return counter;
 	}
 
 	@Override
