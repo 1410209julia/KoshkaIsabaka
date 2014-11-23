@@ -17,11 +17,12 @@ public class Test {
 		
 		//System.out.println(tree.containsValue("acht"));
 		//System.out.println(tree.containsKey(10));
-		//System.out.println(tree.get(5));
-		System.out.println(tree.size());
-		System.out.println(tree.getNode(5));
+		//System.out.println(tree.get(12));
+		//System.out.println(tree.size());
+		//System.out.println(tree.getNode(5));
+		//tree.update(10, "fuenf");
 		
-		//tree.printReversePostorder();
+		tree.printReversePostorder();
 	}
 
 }
