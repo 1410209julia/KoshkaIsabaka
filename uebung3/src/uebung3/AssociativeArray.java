@@ -13,6 +13,7 @@ import java.util.function.BiFunction;
 	public interface AssociativeArray <T,U> {
 	
 	/**
+	 * *
 	 * Loescht die Schluesselwertpaare
 	 */
 	public void clear();
