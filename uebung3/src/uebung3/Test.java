@@ -23,7 +23,7 @@ public class Test {
 		//baum.extractAll(tree);
 		//BiFunction<String, String, String> function = (key, value) -> key + value;
 		//baum.map(function).printPreorder();
-		//tree.remove(4);
+		tree.remove(4);
 		
 		//System.out.println(tree.containsValue("acht"));
 		//System.out.println(tree.containsKey(10));

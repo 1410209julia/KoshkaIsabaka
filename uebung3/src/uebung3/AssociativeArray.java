@@ -4,7 +4,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
 /**
-	 * Das Interface AssociativeArray, welches einen Wert mit einem Schlüssel
+	 * Das Interface AssociativeArray, welches einen Wert mit einem Schluessel
 	 * verbindet
 	 *
 	 * @param <T> der generische Typ fuer Key
@@ -13,7 +13,7 @@ import java.util.function.BiFunction;
 	public interface AssociativeArray <T,U> {
 	
 	/**
-	 * Löscht die Schluesselwertpaare
+	 * Loescht die Schluesselwertpaare
 	 */
 	public void clear();
 	
@@ -34,47 +34,47 @@ import java.util.function.BiFunction;
 	public boolean containsValue(U value);
 	
 	/**
-	 * Gets the.
+	 * gibt den passenden Wert zum uebergebenen Schluessel zurueck
 	 *
-	 * @param key the key
-	 * @return the u
+	 * @param key der Schluessel
+	 * @return Generic U fuer Value
 	 */
 	public U get(T key);
 	
 	/**
-	 * Checks if is empty.
+	 * Kontrolle ob das AssoziativeArray leer ist
 	 *
-	 * @return true, if is empty
+	 * @return true, wenn es leer ist
 	 */
 	public boolean isEmpty();
 	
 	/**
-	 * Put.
+	 * der uebergebene Schluessel und Wert ins assoziative Array speichern
 	 *
-	 * @param key the key
-	 * @param value the value
+	 * @param key der Schluessel
+	 * @param value der Wert
 	 */
 	public void put(T key, U value);
 	
 	/**
-	 * Put all.
+	 * alle uebergebenen Schluessel und Werte ins aktuelle assoziative Array uebergeben
 	 *
-	 * @param node the node
+	 * @param node der Knoten
 	 */
 	public void putAll(BinaerHashTree<T,U> node);
 	
 	/**
-	 * Removes the.
+	 * Knoten entfernen anhand des uebergebenen Schluessels
 	 *
-	 * @param key the key
-	 * @return the u
+	 * @param key der Schluessel
+	 * @return u
 	 */
-	public U remove(T key);
+	public void remove(T key);
 	
 	/**
-	 * Size.
+	 * gibt die Anzahl der Schluesselwertpaare aus
 	 *
-	 * @return the int
+	 * @return int
 	 */
 	public int size();
 	

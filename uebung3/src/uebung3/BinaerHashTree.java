@@ -116,7 +116,7 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 	}
 
 	@Override
-	public U remove(T key) {
+	public void remove(T key) {
 		TreeNode node = getNode(key);
 		TreeNode parentNode = node.parent;
 		if (parentNode.left == node) {
@@ -126,7 +126,7 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 		}
 		putAll(new BinaerHashTree<T, U>(node.right));
 		putAll(new BinaerHashTree<T, U>(node.left));
-		return node.value;
+		
 	}
 
 	@Override
@@ -185,7 +185,7 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 		return map(function, root, newTree);
 	}
 
-	// kein R mehr, weil wir sonst put nicht aufrufen können!
+	// kein R mehr, weil wir sonst put nicht aufrufen kï¿½nnen!
 	public BinaerHashTree<T, U> map(BiFunction<T, U, U> function,
 			TreeNode node, BinaerHashTree<T, U> newTree) {
 		if (node != null) {
