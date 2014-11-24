@@ -3,7 +3,7 @@ package uebung3;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
-public class BinaerHashTree<T, U> implements AssociativeArray<T, U> {
+public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 
 	public TreeNode root;
 	int counter = 0;
