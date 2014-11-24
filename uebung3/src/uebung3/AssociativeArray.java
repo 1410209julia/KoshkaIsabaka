@@ -61,7 +61,7 @@ import java.util.function.BiFunction;
 	 *
 	 * @param node der Knoten
 	 */
-	public void putAll(BinaerHashTree<T,U> node);
+	public void putAll(BinaeryHashTree<T,U> node);
 	
 	/**
 	 * Knoten entfernen anhand des uebergebenen Schluessels
@@ -98,7 +98,7 @@ import java.util.function.BiFunction;
 	 *
 	 * @param node the node
 	 */
-	public void extractAll(BinaerHashTree<T,U> node);
+	public void extractAll(BinaeryHashTree<T,U> node);
 	
 	/**
 	 * Map.
@@ -106,5 +106,5 @@ import java.util.function.BiFunction;
 	 * @param function the function
 	 * @return the binaer hash tree
 	 */
-	public BinaerHashTree<T,U> map(BiFunction<T,U,U> function);
+	public BinaeryHashTree<T,U> map(BiFunction<T,U,U> function);
 }

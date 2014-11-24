@@ -5,7 +5,7 @@ import java.util.function.BiFunction;
 public class Test {
 
 	public static void main(String[] args) {
-		BinaerHashTree<Object, Object> tree = new BinaerHashTree<Object, Object>();
+		BinaeryHashTree<Object, Object> tree = new BinaeryHashTree<Object, Object>();
 		tree.put(5, "fuenf");
 		tree.put(8, "acht");
 		tree.put(4, "vier");
@@ -23,7 +23,7 @@ public class Test {
 		//baum.extractAll(tree);
 		//BiFunction<String, String, String> function = (key, value) -> key + value;
 		//baum.map(function).printPreorder();
-		tree.remove(4);
+		tree.remove(11);
 		
 		//System.out.println(tree.containsValue("acht"));
 		//System.out.println(tree.containsKey(10));

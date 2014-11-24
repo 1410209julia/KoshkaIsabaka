@@ -3,17 +3,17 @@ package uebung3;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
-public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
+public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 
 	public TreeNode root;
 	int counter = 0;
 	
 	BiConsumer<T, U> consume = (key, value) -> this.put(key, value);
 	
-	public BinaerHashTree() {
+	public BinaeryHashTree() {
 	}
 	
-	public BinaerHashTree(TreeNode root) {
+	public BinaeryHashTree(TreeNode root) {
 		this.root = root;
 	}
 
@@ -40,31 +40,41 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 		root = null;
 	}
 
-	// ok
-	@Override
-	public boolean containsKey(T key) {
-		return contains(root, key.hashCode());
+ 	@Override
+ 	public boolean containsKey(T key) {	
+		return containsKey(root, key);
 	}
-
-	// ok
-	@Override
-	public boolean containsValue(U value) {
-		return contains(root, value.hashCode());
-	}
-
-	// ok
-	public boolean contains(TreeNode node, int hash) {
-		if (node != null) {
-			if (node.key.hashCode() == hash || node.value.hashCode() == hash) {
-				return true;
-			} else if (node.key.hashCode() > hash) {
-				return contains(node.left, hash);
-			} else {
-				return (contains(node.right, hash));
-			}
-		}
-		return false;
-	}
+	
+	public boolean containsKey(TreeNode node, T key){
+		 if (node != null) {
+	            if (node.key.equals(key)) {
+	                return true;
+	            } else if (containsKey(node.left, key)) {
+	                return true;
+	            } else if (containsKey(node.right, key)){
+	                return true;
+	            } 
+	        }		    return false;
+ 	}
+ 
+ 	@Override
+ 	public boolean containsValue(U value) {
+	
+			return containsValue(root, value);
+ 	}
+	
+	public boolean containsValue(TreeNode node, U value){
+	    if (node != null) {
+            if (node.value.equals(value)) {
+                return true;
+            } else if (containsValue(node.left, value)) {
+                return true;            
+                } else if (containsValue(node.right, value)){
+               return true;
+           } 
+       }
+	    return false;
+  }
 
 	// ok
 	@Override
@@ -111,22 +121,23 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 	}
 
 	@Override
-	public void putAll(BinaerHashTree<T, U> node) {
+	public void putAll(BinaeryHashTree<T, U> node) {
 		node.forEach(consume);
 	}
 
 	@Override
 	public void remove(T key) {
-		TreeNode node = getNode(key);
-		TreeNode parentNode = node.parent;
-		if (parentNode.left == node) {
-			parentNode.setLeft(null);
-		} else {
-			parentNode.setRight(null);
+		if(containsKey(key)){
+			TreeNode node = getNode(key);
+			TreeNode parentNode = node.parent;
+			if (parentNode.left == node) {
+				parentNode.setLeft(null);
+			} else {
+				parentNode.setRight(null);
+			}
+			putAll(new BinaeryHashTree<T, U>(node.right));
+			putAll(new BinaeryHashTree<T, U>(node.left));
 		}
-		putAll(new BinaerHashTree<T, U>(node.right));
-		putAll(new BinaerHashTree<T, U>(node.left));
-		
 	}
 
 	@Override
@@ -173,21 +184,21 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 	}
 
 	@Override
-	public void extractAll(BinaerHashTree<T, U> node) {
+	public void extractAll(BinaeryHashTree<T, U> node) {
 		node.putAll(this);
 	}
 
 	// BiFunction<T, U, R> function = (key, value) -> key + value;
 
 	@Override
-	public BinaerHashTree<T, U> map(BiFunction<T, U, U> function) {
-		BinaerHashTree<T, U> newTree = new BinaerHashTree<T, U>();
+	public BinaeryHashTree<T, U> map(BiFunction<T, U, U> function) {
+		BinaeryHashTree<T, U> newTree = new BinaeryHashTree<T, U>();
 		return map(function, root, newTree);
 	}
 
 	// kein R mehr, weil wir sonst put nicht aufrufen k�nnen!
-	public BinaerHashTree<T, U> map(BiFunction<T, U, U> function,
-			TreeNode node, BinaerHashTree<T, U> newTree) {
+	public BinaeryHashTree<T, U> map(BiFunction<T, U, U> function,
+			TreeNode node, BinaeryHashTree<T, U> newTree) {
 		if (node != null) {
 			newTree.put(node.key, function.apply(node.key, node.value));
 			map(function, node.left, newTree);
@@ -214,7 +225,7 @@ public class BinaerHashTree<T, U> implements AssociativeArray<T, U>{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BinaerHashTree<T, U> other = (BinaerHashTree<T, U>) obj;
+		BinaeryHashTree<T, U> other = (BinaeryHashTree<T, U>) obj;
 		if (consume == null) {
 			if (other.consume != null)
 				return false;
