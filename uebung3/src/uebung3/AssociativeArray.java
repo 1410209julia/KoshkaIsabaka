@@ -58,7 +58,8 @@ import java.util.function.BiFunction;
 	public void put(T key, U value);
 	
 	/**
-	 * alle uebergebenen Schluessel und Werte ins aktuelle assoziative Array uebergeben
+	 * alle uebergebenen Schluessel und Werte ins aktuelle assoziative Array 
+	 * uebergeben
 	 *
 	 * @param node der Knoten
 	 */
@@ -80,7 +81,8 @@ import java.util.function.BiFunction;
 	public int size();
 	
 	/**
-	 * Wert des uebergebenen Schluessels wird mit uebergebenen Wert aktualisiert
+	 * Wert des uebergebenen Schluessels wird mit uebergebenen Wert 
+	 * aktualisiert
 	 *
 	 * @param key der Schluessel
 	 * @param value der Wert
@@ -88,14 +90,16 @@ import java.util.function.BiFunction;
 	public void update(T key, U value);	
 	
 	/**
-	 * fuehrt den uebergebenen BiConsumer fuer alle Schluesselwertpaare des assoziativen Arrays aus
+	 * fuehrt den uebergebenen BiConsumer fuer alle Schluesselwertpaare 
+	 * des assoziativen Arrays aus
 	 *
 	 * @param consume
 	 */
 	public void forEach(BiConsumer<T, U> consume);
 	
 	/**
-	 * alle Schluesselwertpaare des aktuellen assoziativen Arrays sollen zum uebergebenen 
+	 * alle Schluesselwertpaare des aktuellen assoziativen Arrays 
+	 * sollen zum uebergebenen 
 	 * assoziativen Array hinzugefuegt werden
 	 *
 	 * @param node der Knoten
@@ -103,9 +107,10 @@ import java.util.function.BiFunction;
 	public void extractAll(BinaeryHashTree<T,U> node);
 	
 	/**
-	 * ein neues assoziatives Array wird erzeugt, indem der uebergebene BiFunction fuer alle
-	 *  Schluesselwertpaare des assoziativen Arrays die veraenderten Werte auf 
-	 *  die alten Schluessel uebertraegt
+	 * ein neues assoziatives Array wird erzeugt, indem der uebergebene 
+	 * BiFunction fuer alle Schluesselwertpaare 
+	 * des assoziativen Arrays die veraenderten Werte auf 
+	 * die alten Schluessel uebertraegt
 	 *
 	 * @param function die Funktion
 	 * @return binaerer Hashbaum
