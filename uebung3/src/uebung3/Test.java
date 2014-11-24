@@ -15,15 +15,15 @@ public class Test {
 		tree.put(10, "zehn");
 		tree.put(10, "fuenf");
 		
-		BinaerHashTree<String, String> baum = new BinaerHashTree<String, String>();
+		//BinaerHashTree<String, String> baum = new BinaerHashTree<String, String>();
 		//baum.putAll(tree);
 		
-		baum.put("Lisa", "Miller");
-		baum.put("Jochen", "Schweizer");
+		//baum.put("Lisa", "Miller");
+		//baum.put("Jochen", "Schweizer");
 		//baum.extractAll(tree);
-		BiFunction<String, String, String> function = (key, value) -> key + value;
-		baum.map(function).printPreorder();
-		
+		//BiFunction<String, String, String> function = (key, value) -> key + value;
+		//baum.map(function).printPreorder();
+		//tree.remove(4);
 		
 		//System.out.println(tree.containsValue("acht"));
 		//System.out.println(tree.containsKey(10));
@@ -32,7 +32,9 @@ public class Test {
 		//System.out.println(tree.getNode(5));
 		//tree.update(10, "fuenf");
 		
-		tree.printPreorder();
+		System.out.println(tree);
+		//System.out.println(tree.toString());
+		//System.out.println(tree);
 	}
 
 }

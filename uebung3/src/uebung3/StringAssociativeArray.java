@@ -1,5 +1,5 @@
 package uebung3;
 
-public interface StringAssociativeArray extends AssociativeArray<String, Object>{	
+public interface StringAssociativeArray<U> extends AssociativeArray<String,U>{	
 
 }
