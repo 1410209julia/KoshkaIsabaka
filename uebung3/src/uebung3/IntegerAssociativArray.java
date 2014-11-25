@@ -1,10 +1,11 @@
 package uebung3;
 
 /**
- * Das Interface IntegerAssociativArray.
+ * Die Klasse IntegerAssociativArray.
+ * Sie nimmt nur Integer als Werte.
  *
  * @param <T> der generische Typ
  */
-public interface IntegerAssociativArray<T> extends AssociativeArray<T, Integer> {
+public class IntegerAssociativArray<T> extends BinaeryHashTree <T, Integer> {
 	
 }

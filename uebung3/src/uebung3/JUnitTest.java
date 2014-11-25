@@ -2,6 +2,7 @@ package uebung3;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.function.BiFunction;
 
 import org.junit.Test;
@@ -23,6 +24,9 @@ public class JUnitTest {
 		
 		BinaeryHashTree<Object, Object> baum  
 									= new BinaeryHashTree<Object, Object>();
+		
+	
+		
 		
 		//containsKey
 		assertEquals(true, tree.containsKey(5));
@@ -96,5 +100,8 @@ public class JUnitTest {
 		//clear
 		tree.clear();
 		assertEquals(true, tree.isEmpty());
+		
+		
+		
 	}
 }

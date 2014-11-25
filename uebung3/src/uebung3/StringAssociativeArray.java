@@ -1,10 +1,11 @@
 package uebung3;
 
 /**
- * Das Interface StringAssociativeArray.
+ * Die Klasse StringAssociativeArray.
+ * Sie nimmt nur Strings als Schlüssel.
  *
  * @param <U> der generische Typ
  */
-public interface StringAssociativeArray<U> extends AssociativeArray<String,U>{	
+public class StringAssociativeArray<U> extends BinaeryHashTree <String,U>{	
 
 }
