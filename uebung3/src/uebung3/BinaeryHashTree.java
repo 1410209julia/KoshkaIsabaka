@@ -4,32 +4,36 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
 /**
- * Die Klasse BinaeryHashTree.
+ * die klasse binaryhashtree repräsentiert einen binären baum. Die Knoten des
+ * Baums entsprechen die Schlüssel-Wert-Paare
  *
- * @param <T> der generische Typ fuer Schluessel
- * @param <U> der generische Typ fuer Wert
+ * @param <T>
+ *            der generische Typ fuer Schluessel
+ * @param <U>
+ *            der generische Typ fuer Wert
  */
-public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
+public class BinaeryHashTree<T, U> implements AssociativeArray<T, U> {
 
 	/** die Wurzel */
 	public TreeNode root;
-	
+
 	/** der Zaehler */
 	private int counter = 0;
-	
+
 	/** der consume */
 	private BiConsumer<T, U> consumer = (key, value) -> this.put(key, value);
-	
+
 	/**
 	 * Instantiiert einen neuen binaeren Hashbaum
 	 */
 	public BinaeryHashTree() {
 	}
-	
+
 	/**
-	 *  Instantiiert einen neuen binaeren Hashbaum
+	 * Instantiiert einen neuen binaeren Hashbaum
 	 *
-	 * @param root die Wurzel
+	 * @param root
+	 *            die Wurzel
 	 */
 	public BinaeryHashTree(TreeNode root) {
 		this.root = root;
@@ -38,35 +42,39 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 	/**
 	 * zeigt den Knoten des uebergebenen Schluessels im Baum an
 	 *
-	 * @param key der Schluessel
+	 * @param key
+	 *            der Schluessel
 	 * @return den Knoten
 	 */
 	public TreeNode getNode(T key) {
-		return getNodeRek(key, root);
+		return getNode(key, root);
 	}
 
 	/**
 	 * gibt den Knoten zurueck (rekursive Methode)
 	 *
-	 * @param key der Schluessel
-	 * @param node der Knoten
+	 * @param key
+	 *            der Schluessel
+	 * @param node
+	 *            der Knoten
 	 * @return den Knoten
 	 */
-	private TreeNode getNodeRek(T key, TreeNode node) {
+	private TreeNode getNode(T key, TreeNode node) {
 		if (node != null) {
 			if (node.key.hashCode() == key.hashCode()) {
 				return node;
 			} else if (node.key.hashCode() > key.hashCode()) {
-				return getNodeRek(key, node.left);
+				return getNode(key, node.left);
 			} else {
-				return getNodeRek(key, node.right);
+				return getNode(key, node.right);
 			}
 		}
 		return null;
 	}
 
-	// ok
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#clear()
 	 */
 	@Override
@@ -74,65 +82,74 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		root = null;
 	}
 
- 	/* (non-Javadoc)
-	  * @see uebung3.AssociativeArray#containsKey(java.lang.Object)
-	  */
-	 @Override
- 	public boolean containsKey(T key) {	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uebung3.AssociativeArray#containsKey(java.lang.Object)
+	 */
+	@Override
+	public boolean containsKey(T key) {
 		return containsKey(root, key);
 	}
-	
+
 	/**
 	 * Kontrolle ob Schluessel enthalten.
 	 *
-	 * @param node der Knoten
-	 * @param key der Schluessel
+	 * @param node
+	 *            der Knoten
+	 * @param key
+	 *            der Schluessel
 	 * @return true, wenn erfolgreich
 	 */
-	private boolean containsKey(TreeNode node, T key){
-		 if (node != null) {
-	            if (node.key.equals(key)) {
-	                return true;
-	            } else if (containsKey(node.left, key)) {
-	                return true;
-	            } else if (containsKey(node.right, key)){
-	                return true;
-	            } 
-	        }
-		 return false;
- 	}
- 
- 	/* (non-Javadoc)
-	  * @see uebung3.AssociativeArray#containsValue(java.lang.Object)
-	  */
-	 @Override
- 	public boolean containsValue(U value) {
-	
-			return containsValue(root, value);
- 	}
-	
+	private boolean containsKey(TreeNode node, T key) {
+		if (node != null) {
+			if (node.key.equals(key)) {
+				return true;
+			} else if (containsKey(node.left, key)) {
+				return true;
+			} else if (containsKey(node.right, key)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see uebung3.AssociativeArray#containsValue(java.lang.Object)
+	 */
+	@Override
+	public boolean containsValue(U value) {
+
+		return containsValue(root, value);
+	}
+
 	/**
 	 * Kontrolle ob Wert enthalten.
 	 *
-	 * @param node der Knoten
-	 * @param value der Wert
+	 * @param node
+	 *            der Knoten
+	 * @param value
+	 *            der Wert
 	 * @return true, wenn erfolgreich
 	 */
-	private boolean containsValue(TreeNode node, U value){
-	    if (node != null) {
-            if (node.value.equals(value)) {
-                return true;
-            } else if (containsValue(node.left, value)) {
-                return true;            
-                } else if (containsValue(node.right, value)){
-               return true;
-           } 
-       }
-	    return false;
-  }
+	private boolean containsValue(TreeNode node, U value) {
+		if (node != null) {
+			if (node.value.equals(value)) {
+				return true;
+			} else if (containsValue(node.left, value)) {
+				return true;
+			} else if (containsValue(node.right, value)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-	// ok
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#get(java.lang.Object)
 	 */
 	@Override
@@ -143,8 +160,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		return null;
 	}
 
-	// ok
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#isEmpty()
 	 */
 	@Override
@@ -152,8 +170,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		return this.root == null;
 	}
 
-	// ok
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#put(java.lang.Object, java.lang.Object)
 	 */
 	@Override
@@ -169,8 +188,10 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 	/**
 	 * setzt Knoten
 	 *
-	 * @param parentNode der oberste Konten/Vaterknoten
-	 * @param node der Knoten
+	 * @param parentNode
+	 *            der oberste Konten/Vaterknoten
+	 * @param node
+	 *            der Knoten
 	 */
 	private void put(TreeNode parentNode, TreeNode node) {
 		if (parentNode.key.hashCode() == node.key.hashCode()) {
@@ -190,7 +211,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#putAll(uebung3.BinaeryHashTree)
 	 */
 	@Override
@@ -198,12 +221,14 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		node.forEach(consumer);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#remove(java.lang.Object)
 	 */
 	@Override
 	public void remove(T key) {
-		if(containsKey(key)){
+		if (containsKey(key)) {
 			TreeNode node = getNode(key);
 			TreeNode parentNode = node.parent;
 			if (parentNode.left == node) {
@@ -216,7 +241,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#size()
 	 */
 	@Override
@@ -247,7 +274,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		return counter;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#update(java.lang.Object, java.lang.Object)
 	 */
 	@Override
@@ -257,7 +286,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#forEach(java.util.function.BiConsumer)
 	 */
 	@Override
@@ -268,8 +299,10 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 	/**
 	 * durchlaeuft jeden Knoten
 	 *
-	 * @param consume fuer Lambdaberechnung
-	 * @param node der Knoten
+	 * @param consume
+	 *            fuer Lambdaberechnung
+	 * @param node
+	 *            der Knoten
 	 */
 	private void forEach(BiConsumer<T, U> consume, TreeNode node) {
 		if (node != null) {
@@ -279,7 +312,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#extractAll(uebung3.BinaeryHashTree)
 	 */
 	@Override
@@ -287,9 +322,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		node.putAll(this);
 	}
 
-	// BiFunction<T, U, R> function = (key, value) -> key + value;
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see uebung3.AssociativeArray#map(java.util.function.BiFunction)
 	 */
 	@Override
@@ -299,11 +334,15 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 	}
 
 	/**
-	 * neues assoziatives Array mit ueberschriebenen Schluesseln ( Inhalt: veraenderte Werte)
+	 * neues assoziatives Array mit ueberschriebenen Schluesseln ( Inhalt:
+	 * veraenderte Werte)
 	 *
-	 * @param function die Funktion
-	 * @param node der Knoten
-	 * @param newTree der neue Baum
+	 * @param function
+	 *            die Funktion
+	 * @param node
+	 *            der Knoten
+	 * @param newTree
+	 *            der neue Baum
 	 * @return der binaere HashBaum
 	 */
 	private BinaeryHashTree<T, U> map(BiFunction<T, U, U> function,
@@ -316,20 +355,25 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		return newTree;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((consumer == null) ? 0 : consumer.hashCode());
+		result = prime * result
+				+ ((consumer == null) ? 0 : consumer.hashCode());
 		result = prime * result + counter;
 		result = prime * result + ((root == null) ? 0 : root.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -356,7 +400,9 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -367,7 +413,8 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 	/**
 	 * Die ToString Methode, die nach Blatt-Vorgabe ausgibt
 	 *
-	 * @param node der Knoten
+	 * @param node
+	 *            der Knoten
 	 * @return den String
 	 */
 	private String toString(TreeNode node) {
@@ -388,24 +435,26 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 
 		/** Der Wert. */
 		U value;
-		
+
 		/** Der Schluessel. */
 		T key;
-		
+
 		/** Der linke Knoten */
 		TreeNode left = null;
-		
+
 		/** Der rechte Knoten */
 		TreeNode right = null;
-		
-		/** Der Eltern-/Vaterknoten*/
+
+		/** Der Eltern-/Vaterknoten */
 		TreeNode parent = null;
 
 		/**
 		 * Instanziiert einen neuen Baumknoten
 		 *
-		 * @param value der Wert
-		 * @param key der Schluessel
+		 * @param value
+		 *            der Wert
+		 * @param key
+		 *            der Schluessel
 		 */
 		TreeNode(U value, T key) {
 			this.value = value;
@@ -416,10 +465,14 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		/**
 		 * Instantiiert einen neuen Baumknoten
 		 *
-		 * @param value der Wert
-		 * @param key der Schluessel
-		 * @param left der linke Knoten
-		 * @param right der rechte Knoten
+		 * @param value
+		 *            der Wert
+		 * @param key
+		 *            der Schluessel
+		 * @param left
+		 *            der linke Knoten
+		 * @param right
+		 *            der rechte Knoten
 		 */
 		TreeNode(U value, T key, TreeNode left, TreeNode right) {
 			this(value, key);
@@ -430,7 +483,8 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		/**
 		 * Setzt den linken Knoten
 		 *
-		 * @param node der Knoten
+		 * @param node
+		 *            der Knoten
 		 */
 		void setLeft(TreeNode node) {
 			left = node;
@@ -443,7 +497,8 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U>{
 		/**
 		 * Setzt den rechten Knoten
 		 *
-		 * @param node der rechte Knoten
+		 * @param node
+		 *            der rechte Knoten
 		 */
 		void setRight(TreeNode node) {
 			right = node;
