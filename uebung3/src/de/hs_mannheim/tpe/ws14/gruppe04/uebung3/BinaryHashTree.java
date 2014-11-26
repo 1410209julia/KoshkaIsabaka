@@ -4,15 +4,15 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
 /**
- * die klasse binaryhashtree repraesentiert einen binaeren baum. Die Knoten des
- * Baums entsprechen die Schluessel-Wert-Paare
+ * die Klasse Binaryhashtree repraesentiert einen binaeren Baum. Die Knoten des
+ * Baums entsprechen den Schluessel-Wert-Paaren
  *
  * @param <T>
  *            der generische Typ fuer Schluessel
  * @param <U>
  *            der generische Typ fuer Wert
  */
-public class BinaeryHashTree<T, U> implements AssociativeArray<T, U> {
+public class BinaryHashTree<T, U> implements AssociativeArray<T, U> {
 
 	/** die Wurzel */
 	public TreeNode root;
@@ -26,7 +26,7 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U> {
 	/**
 	 * Instantiiert einen neuen binaeren Hashbaum
 	 */
-	public BinaeryHashTree() {
+	public BinaryHashTree() {
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U> {
 	 * @param root
 	 *            die Wurzel
 	 */
-	public BinaeryHashTree(TreeNode root) {
+	public BinaryHashTree(TreeNode root) {
 		this.root = root;
 	}
 
