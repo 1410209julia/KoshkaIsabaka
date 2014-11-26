@@ -1,6 +1,8 @@
 package de.hs_mannheim.tpe.ws14.gruppe04.uebung3;
 
 import java.util.ArrayList;
+
+import de.hs_mannheim.tpe.ws14.gruppe04.uebung3.BinaryHashTree.TreeNode;
 /**
  * Die Klasse Dictionary.
  * 

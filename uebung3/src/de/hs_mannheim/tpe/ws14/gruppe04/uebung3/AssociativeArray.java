@@ -63,7 +63,7 @@ import java.util.function.BiFunction;
 	 *
 	 * @param node der Knoten
 	 */
-	public void putAll(BinaeryHashTree<T,U> node);
+	public void putAll(BinaryHashTree<T,U> node);
 	
 	/**
 	 * Knoten entfernen anhand des uebergebenen Schluessels
@@ -104,7 +104,7 @@ import java.util.function.BiFunction;
 	 *
 	 * @param node der Knoten
 	 */
-	public void extractAll(BinaeryHashTree<T,U> node);
+	public void extractAll(BinaryHashTree<T,U> node);
 	
 	/**
 	 * ein neues assoziatives Array wird erzeugt, indem der uebergebene 
@@ -115,5 +115,6 @@ import java.util.function.BiFunction;
 	 * @param function die Funktion
 	 * @return binaerer Hashbaum
 	 */
-	public BinaeryHashTree<T,U> map(BiFunction<T,U,U> function);
+	public BinaryHashTree<T,U> map(BiFunction<T,U,U> function);
 }
+	

@@ -217,7 +217,7 @@ public class BinaryHashTree<T, U> implements AssociativeArray<T, U> {
 	 * @see uebung3.AssociativeArray#putAll(uebung3.BinaeryHashTree)
 	 */
 	@Override
-	public void putAll(BinaeryHashTree<T, U> node) {
+	public void putAll(BinaryHashTree<T, U> node) {
 		node.forEach(consumer);
 	}
 
@@ -236,8 +236,8 @@ public class BinaryHashTree<T, U> implements AssociativeArray<T, U> {
 			} else {
 				parentNode.setRight(null);
 			}
-			putAll(new BinaeryHashTree<T, U>(node.right));
-			putAll(new BinaeryHashTree<T, U>(node.left));
+			putAll(new BinaryHashTree<T, U>(node.right));
+			putAll(new BinaryHashTree<T, U>(node.left));
 		}
 	}
 
@@ -318,7 +318,7 @@ public class BinaryHashTree<T, U> implements AssociativeArray<T, U> {
 	 * @see uebung3.AssociativeArray#extractAll(uebung3.BinaeryHashTree)
 	 */
 	@Override
-	public void extractAll(BinaeryHashTree<T, U> node) {
+	public void extractAll(BinaryHashTree<T, U> node) {
 		node.putAll(this);
 	}
 
@@ -328,8 +328,8 @@ public class BinaryHashTree<T, U> implements AssociativeArray<T, U> {
 	 * @see uebung3.AssociativeArray#map(java.util.function.BiFunction)
 	 */
 	@Override
-	public BinaeryHashTree<T, U> map(BiFunction<T, U, U> function) {
-		BinaeryHashTree<T, U> newTree = new BinaeryHashTree<T, U>();
+	public BinaryHashTree<T, U> map(BiFunction<T, U, U> function) {
+		BinaryHashTree<T, U> newTree = new BinaryHashTree<T, U>();
 		return map(function, root, newTree);
 	}
 
@@ -345,8 +345,8 @@ public class BinaryHashTree<T, U> implements AssociativeArray<T, U> {
 	 *            der neue Baum
 	 * @return der binaere HashBaum
 	 */
-	private BinaeryHashTree<T, U> map(BiFunction<T, U, U> function,
-			TreeNode node, BinaeryHashTree<T, U> newTree) {
+	private BinaryHashTree<T, U> map(BiFunction<T, U, U> function,
+			TreeNode node, BinaryHashTree<T, U> newTree) {
 		if (node != null) {
 			newTree.put(node.key, function.apply(node.key, node.value));
 			map(function, node.left, newTree);
@@ -384,7 +384,7 @@ public class BinaryHashTree<T, U> implements AssociativeArray<T, U> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BinaeryHashTree<T, U> other = (BinaeryHashTree<T, U>) obj;
+		BinaryHashTree<T, U> other = (BinaryHashTree<T, U>) obj;
 		if (consumer == null) {
 			if (other.consumer != null)
 				return false;

@@ -12,8 +12,8 @@ public class JUnitTest {
 	@Test
 	public void test() {
 		
-		BinaeryHashTree<Object, Object> tree 
-									= new BinaeryHashTree<Object, Object>();
+		BinaryHashTree<Object, Object> tree 
+									= new BinaryHashTree<Object, Object>();
 		tree.put(5, "fuenf");
 		tree.put(8, "acht");
 		tree.put(4, "vier");
@@ -22,8 +22,8 @@ public class JUnitTest {
 		tree.put(3, "drei");
 		tree.put(10, "zehn");
 		
-		BinaeryHashTree<Object, Object> baum  
-									= new BinaeryHashTree<Object, Object>();
+		BinaryHashTree<Object, Object> baum  
+									= new BinaryHashTree<Object, Object>();
 		
 	
 		
@@ -66,8 +66,8 @@ public class JUnitTest {
 		assertEquals(false, tree.containsKey(11));
 		
 		//size
-		BinaeryHashTree<Object, Object> leer = 
-				new BinaeryHashTree<Object, Object>();
+		BinaryHashTree<Object, Object> leer = 
+				new BinaryHashTree<Object, Object>();
 		assertEquals(0, leer.size());
 		assertEquals(10, tree.size());
 		assertEquals(3, baum.size());
@@ -89,11 +89,11 @@ public class JUnitTest {
 		//map
 		BiFunction<String, String, String> function 
 									= (key, value) -> key + value;
-		BinaeryHashTree<String, String> stringtree 
-									= new BinaeryHashTree<String, String>();
+		BinaryHashTree<String, String> stringtree 
+									= new BinaryHashTree<String, String>();
 		stringtree.put("Erni", "Bert");
 		stringtree.put("Mini", "Maus");
-		BinaeryHashTree<String, String> newtree = stringtree.map(function);
+		BinaryHashTree<String, String> newtree = stringtree.map(function);
 		assertEquals("ErniBert", newtree.get("Erni"));
 		assertEquals("MiniMaus", newtree.get("Mini"));
 		

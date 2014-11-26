@@ -6,6 +6,6 @@ package de.hs_mannheim.tpe.ws14.gruppe04.uebung3;
  *
  * @param <T> der generische Typ
  */
-public class IntegerAssociativArray<T> extends BinaeryHashTree <T, Integer> {
+public class IntegerAssociativArray<T> extends BinaryHashTree <T, Integer> {
 	
 }

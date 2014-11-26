@@ -6,6 +6,6 @@ package de.hs_mannheim.tpe.ws14.gruppe04.uebung3;
  *
  * @param <U> der generische Typ
  */
-public class StringAssociativeArray<U> extends BinaeryHashTree <String,U>{	
+public class StringAssociativeArray<U> extends BinaryHashTree <String,U>{	
 
 }
