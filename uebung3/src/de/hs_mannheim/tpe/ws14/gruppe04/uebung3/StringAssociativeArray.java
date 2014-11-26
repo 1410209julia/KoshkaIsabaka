@@ -1,8 +1,8 @@
-package uebung3;
+package de.hs_mannheim.tpe.ws14.gruppe04.uebung3;
 
 /**
  * Die Klasse StringAssociativeArray.
- * Sie nimmt nur Strings als Schlüssel.
+ * Sie nimmt nur Strings als Schlï¿½ssel.
  *
  * @param <U> der generische Typ
  */

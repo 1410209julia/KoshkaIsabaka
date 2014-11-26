@@ -1,4 +1,4 @@
-package uebung3;
+package de.hs_mannheim.tpe.ws14.gruppe04.uebung3;
 
 /**
  * Die Klasse IntegerAssociativArray.

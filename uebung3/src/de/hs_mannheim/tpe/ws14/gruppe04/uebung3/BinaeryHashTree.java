@@ -1,11 +1,11 @@
-package uebung3;
+package de.hs_mannheim.tpe.ws14.gruppe04.uebung3;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
 /**
- * die klasse binaryhashtree repräsentiert einen binären baum. Die Knoten des
- * Baums entsprechen die Schlüssel-Wert-Paare
+ * die klasse binaryhashtree repraesentiert einen binaeren baum. Die Knoten des
+ * Baums entsprechen die Schluessel-Wert-Paare
  *
  * @param <T>
  *            der generische Typ fuer Schluessel
@@ -20,7 +20,7 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U> {
 	/** der Zaehler */
 	private int counter = 0;
 
-	/** der consume */
+	/** der consumer */
 	private BiConsumer<T, U> consumer = (key, value) -> this.put(key, value);
 
 	/**
@@ -189,7 +189,7 @@ public class BinaeryHashTree<T, U> implements AssociativeArray<T, U> {
 	 * setzt Knoten
 	 *
 	 * @param parentNode
-	 *            der oberste Konten/Vaterknoten
+	 *            der oberste Knoten/Vaterknoten
 	 * @param node
 	 *            der Knoten
 	 */

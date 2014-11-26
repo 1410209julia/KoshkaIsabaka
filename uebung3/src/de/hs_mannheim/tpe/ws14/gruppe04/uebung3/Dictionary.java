@@ -1,4 +1,4 @@
-package uebung3;
+package de.hs_mannheim.tpe.ws14.gruppe04.uebung3;
 
 import java.util.ArrayList;
 /**
@@ -14,19 +14,19 @@ public class Dictionary extends StringAssociativeArray<String> {
 	ArrayList<String> valueArray = new ArrayList<String>();
 
 	/**
-	 * gibt ein Array mit Schlüsseln zurück
+	 * gibt ein Array mit Schluesseln zurueck
 	 *
-	 * @return die arrayList mit den Schlüsseln
+	 * @return die arrayList mit den Schluesseln
 	 */
 	public ArrayList<String> keys() {
 		return keys(root);
 	}
 
 	/**
-	 * Keys füllt die ArrayList
+	 * Keys fuellt die ArrayList
 	 *
 	 * @param node der Knoten
-	 * @return die arrayList mit den Schlüsseln
+	 * @return die arrayList mit den Schluesseln
 	 */
 	private ArrayList<String> keys(TreeNode node) {
 		if (node != null) {
