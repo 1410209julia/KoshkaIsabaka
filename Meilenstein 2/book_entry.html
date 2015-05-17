@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+	<title>book entry</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <script language="javascript" type="text/javascript" src="book_entry.js"></script>
+
+</head>
+<body>
+    
+    <div id="buchAnlegen">
+<h2 style="font-size:22px; color: rgb(63,72,204)"> Buch anlegen </h2>
+</div>
+    
+   
+    <form  action="http://martinakraus.net/createBookEntry.php" method="get" autocomplete="off" >
+
+<p>
+ <label  for="titel" >Titel des Buches:</label>
+      <input id="titel" type="text" style="width:21%" name="titel" value="" size="20"  maxlength="50" required="required" />
+</p>
+
+<p>
+ <label  for="autor">Buchautor:</label>
+      <input id="autor" type="text" style="width:21%" name="autor" value="" size="20" maxlength="50" required="required"/>
+</p>
+
+
+<p>
+ <label for="isbn">ISBN:</label>
+      <input id="isbn"  type="number"  style="width:21%" name="isbn" value="" size="20"  />
+</p>
+
+<p>
+ <label for="kapitel">Kapitel:</label>
+<input id="kapitel" type="number" style="width:21%" size="30"   name="kapitel" required="required"/>
+</p>
+
+<p>
+ <label for="jahr">Erscheinungsjahr:</label>
+<input id="jahr" type="number" style="width:21%" size="30"  name="jahr" required="required"/>
+</p>
+
+<p>
+ 	<label for="auflage">Auflage:</label>
+	<input id="auflage" type="number" style="width:21%" size="30" name="auflage" required="required"/>
+</p>
+
+<p>
+ <label for="art">Art des Buches:</label>
+<select id="art" style="width:21.5%; height: 22px" name="art" size="1" required="required">
+    <option value="hardcover" selected="selected">Hardcover</option>
+<option value="ebook">eBook</option>
+<option value="newspaper">Newspaper</option>
+<option value="taschenbuch" >Taschenbuch</option>
+<option value="lexikon">Lexikon</option>
+<option value="paperback">Paperback</option>
+</select>
+</p>
+
+<p>
+ <label id="genre" >Genre:</label>
+</p>
+<div id="ersteReihe">
+<input type="checkbox" name="horror" checked="checked"/><span> Horror</span> <br/>
+<input type="checkbox" name="psycho"/><span> Psycho </span><br/>
+<input type="checkbox" name=krimi><span> Krimi </span ><br/>
+</div>
+<div id="zweiteReihe">
+<input class="zweiteReihe" type="checkbox" name="doku"/> <span> Doku </span><br/>
+<input type="checkbox" name="komödien"/> <span> Komödien </span><br/>
+<input type="checkbox" name="romanze"/><span> Romanze </span><br/>
+</div>
+
+        <div id="persoenlich"> <!--nicht auslagern können-->
+ 	<label  style="width:20%" for="vorname">Ihr Vorname</label>
+      	<input id="vorname" type="text" style="width:35%" name="vorname" value="" size="30"  required="required"/>
+
+<p>
+      	<label  style="width:20%" for="nachname">Ihr Nachname</label>
+      	<input id="nachname" type="text" style="width:35%" name="nachname" value="" size="30"  required="required"/>
+</p>
+<p>
+ 	<label style="width:20%" for="filmfavorit">Mein Favorit</label>
+	<input id="filmfavorit" type="checkbox" size="30" name="filmfavorit"/>
+</p>
+</div>
+
+<div>
+<input class="knopf" type="submit" name="absenden" value="Absenden"/>
+</div>
+
+    </form>
+</body>
+
+</html>
+
+                                                          

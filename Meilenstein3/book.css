@@ -1,0 +1,19 @@
+h1{font-size:22px; color: rgb(63,72,204);}
+*{font-family: sans-serif; text-decoration: none; color: black; border-color: rgb(63,72,204);   }
+table{
+    border: 10px solid rgb(63,72,204);
+    border-collapse: collapse;
+    width:1000px;
+    text-align:center;
+    cursor:pointer;
+}
+td{
+    border:10px solid rgb(63,72,204)
+}
+th{
+    border:10px solid rgb(63,72,204)
+}
+body{background-color: rgb(153,217,234);
+    text-align: center;
+}
+

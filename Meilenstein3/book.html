@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Meine Bücher</title>
+    <link rel="stylesheet" type="text/css" href="book.css">
+    <script src="book.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="json/horror_books.json"></script>
+	<script type="text/javascript" src="json/roman_books.json"></script>
+  </head>
+
+  <body>
+    <center>
+        <h1>Meine Bücher</h1>
+	<table>
+	  <tr>
+	    <th style="background-color: rgb(63,72,204)" id="horror" name="horror" onClick="anzeige_Horror()">Horror</th>
+		<th style="background-color: rgb(0,162,232);" id="roman" name="roman" onClick="anzeige_Roman()">Roman</th>
+	  </tr>
+	</table>
+
+	  <br />
+	  <br />
+
+	  <div id="tab_horror">
+	  <script>
+		load(horrorObject);
+		</script>
+		</div>
+		
+	  <div style="display:none" id="tab_roman">
+	  <script>
+		load(romanObject);
+	</script>
+	</div>
+	</center>
+  </body>
+</html>

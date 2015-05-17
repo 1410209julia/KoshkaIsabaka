@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+	<title>book entry</title>
+
+</head>
+
+<body>
+
+<style type="text/css">
+	label {
+    	width: 160px;
+    	float: left;
+	font-size: 16px;
+	color: rgb(63,72,204)
+	}
+	body  { background-color:rgb(153,217,217);
+	font-family: sans-serif;}
+	span { font-size: 14px;
+		font-weight: bolder;}
+	.knopf { 
+	color: rgb(63,72,204);
+	width: 200px;
+	border: 10px solid rgb(63,72,204);
+	line-height: 130%;
+	background-color: rgb(0,162,232);
+	}
+</style>
+
+<div style="margin-left: 260px; font-weight: bolder">
+<h2 style="font-size:22px; color: rgb(63,72,204)"> Buch anlegen </h2>
+</div>
+
+<div style="float:left;margin-left:100px; font-weight: bolder">
+
+<p>
+ <label for="titel">Titel des Buches:</label>
+      <input type="text" name="titel" value="" size="20" maxlength="50" />
+</p>
+
+<p>
+ <label for="autor">Buchautor:</label>
+      <input type="text" name="autor" value="" size="20" maxlength="50" />
+</p>
+
+
+<p>
+ <label for="isbn">ISBN:</label>
+      <input type="number" name="isbn" value="" size="20" maxlength="50" />
+</p>
+
+<p>
+ <label for="kapitel">Kapitel:</label>
+<input type="number" size="30" maxlength="40" name="kapitel"/>
+</p>
+
+<p>
+ <label for="jahr">Erscheinungsjahr:</label>
+<input type="number" size="30" maxlength="40" name="jahr"/>
+</p>
+
+<p>
+ 	<label for="auflage">Auflage:</label>
+	<input type="number" size="30" maxlength="40" name="auflage"/>
+</p>
+
+<p>
+ <label for="art">Art des Buches:</label>
+<select style="width:173px; height: 22px" name="art" size="1">
+<option value="ebook">eBook</option>
+<option value="newspaper">Newspaper</option>
+<option value="taschenbuch" >Taschenbuch</option>
+<option value="lexikon">Lexikon</option>
+<option value="hardcover" selected="selected">Hardcover</option>
+<option value="paperback">Paperback</option>
+</select>
+</p>
+
+<p>
+ <label for="genre">Gernre:</label>
+<div style="margin-left: 160px;">
+<input type="checkbox" name="horror" " checked="checked"/> <span> Horror </span></br> 
+<input type="checkbox" name="psycho" /><span> Psycho </span></br>
+<input type="checkbox" name=krimi"/><span> Krimi </span></br>
+</div>
+<div style=" margin-left: 335px; margin-top: -56px">
+<input type="checkbox" name="doku"/> <span> Doku </span><br/>
+<input type="checkbox" name="komödien"/> <span> Komödien </span><br/>
+<input type="checkbox" name="romanze"/><span> Romanze </span><br/>
+</div>
+</p>
+
+</div>
+
+<div style="float:right; width:50%;">
+<p>
+ 	<label for="vorname">Ihr Vorname:</label>
+      	<input type="text" name="vorname" value="" size="20" maxlength="50" />
+</p>
+
+<p>
+      	<label for="nachname">Ihr Nachname:</label>
+      	<input type="text" name="nachname" value="" size="20" maxlength="50" />
+</p>
+
+
+<p>
+ 	<label for="filmfavorit">Favorit markieren:</label>
+	<input type="checkbox" size="30" maxlength="40" name="filmfavorit"/>
+</p>
+</div>
+
+<div style="margin-top: 400px; margin-left:550px">
+<input class="knopf" type="button" name="absenden" value="Absenden"/>
+</div>
+</body>
+
+</html>
+
+
